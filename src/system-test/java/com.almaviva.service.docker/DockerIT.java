@@ -1,4 +1,4 @@
-package com.almaviva.service.greeting;
+package com.almaviva.service.docker;
 
 import org.junit.jupiter.api.Test;
 

@@ -12,7 +12,7 @@ import java.net.URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GreetingControllerIT {
+public class GreetingControllerTest {
 
     // bind the above RANDOM_PORT
     @LocalServerPort
@@ -22,7 +22,7 @@ public class GreetingControllerIT {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void getHello() throws Exception {
+    public void testGreeting() throws Exception {
 
         ResponseEntity<String> response = restTemplate.getForEntity(
                 new URL("http://localhost:" + port + "/greeting").toString(), String.class);
