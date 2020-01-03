@@ -142,43 +142,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>org.pitest</groupId>
-                <artifactId>pitest-maven</artifactId>
-                <version>${pitest.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.pitest</groupId>
-                        <artifactId>pitest-junit5-plugin</artifactId>
-                        <version>0.8</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>pit-report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>mutationCoverage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <timeoutFactor>1.5</timeoutFactor>
-                    <timeoutConstant>10000</timeoutConstant>
-                    <mutationThreshold>100</mutationThreshold>
-                    <targetClasses>
-                        <param>com.almaviva.service.*</param>
-                    </targetClasses>
-                    <targetTests>
-                        <param>com.almaviva.service.*</param>
-                    </targetTests>
-                    <mutators>
-                        <mutator>ALL</mutator>
-                    </mutators>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
 
@@ -189,6 +152,53 @@
                 <skip.integration.tests>true</skip.integration.tests>
                 <skip.unit.tests>false</skip.unit.tests>
             </properties>
+        </profile>
+
+        <profile>
+            <id>fallout</id>
+            <properties>
+                <skip.integration.tests>true</skip.integration.tests>
+                <skip.unit.tests>false</skip.unit.tests>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <version>${pitest.version}</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.pitest</groupId>
+                                <artifactId>pitest-junit5-plugin</artifactId>
+                                <version>0.8</version>
+                            </dependency>
+                        </dependencies>
+                        <executions>
+                            <execution>
+                                <id>pit-report</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>mutationCoverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <timeoutFactor>1.5</timeoutFactor>
+                            <timeoutConstant>10000</timeoutConstant>
+                            <mutationThreshold>100</mutationThreshold>
+                            <targetClasses>
+                                <param>com.almaviva.service.*</param>
+                            </targetClasses>
+                            <targetTests>
+                                <param>com.almaviva.service.*</param>
+                            </targetTests>
+                            <mutators>
+                                <mutator>ALL</mutator>
+                            </mutators>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
 
         <profile>
