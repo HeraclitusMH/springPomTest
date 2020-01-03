@@ -43,4 +43,13 @@ public class MutationExampleTest {
         MutationExample me = new MutationExample();
         assertEquals("odd",me.oddOrEven(-3));
     }
+
+    @Test
+    public void TestMantainVarValue(){
+        MutationExample me = new MutationExample();
+        Integer x = 4;
+        String res = me.oddOrEven(x);
+        assertEquals(4,x);
+
+    }
 }
